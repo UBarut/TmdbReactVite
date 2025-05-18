@@ -1,0 +1,9 @@
+.card-slider-container-01 {
+    margin: 10px 0 30px;
+    padding: 0 16px;
+    .inner-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

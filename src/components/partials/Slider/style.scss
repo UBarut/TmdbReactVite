@@ -1,0 +1,163 @@
+.mainSlider.outer-swiper {
+    // height: 50dvw;
+    width: 100%;
+    // max-height: 640px;
+    aspect-ratio: 3840/2160;
+
+    .swiper {
+        height: 100%;
+
+        .swiper-wrapper {
+            .swiper-slide {
+                position: relative;
+                height: inherit;
+
+                .image {
+                    height: inherit;
+
+                    img {
+                        height: inherit;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .content {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50%;
+                    height: 100%;
+                    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
+
+                    h3 {
+                        font-size: 54px;
+                        color: white;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.cardSlider-01.outer-swiper {
+    .swiper {
+        width: 100%;
+        padding-top: 50px;
+        margin-top: -50px;
+        padding-bottom: 50px;
+        margin-bottom: -50px;
+
+        .swiper-wrapper {
+            .swiper-slide {
+                position: relative;
+                height: inherit;
+                border-radius: 4px;
+                overflow: hidden;
+                box-shadow: rgba(158, 158, 158, 0.35) 0px 5px 15px;
+                width: 16.7%;
+                aspect-ratio: 2/3;
+
+                .image {
+                    width: inherit;
+                    height: 100%;
+
+                    img {
+                        width: inherit;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cast-slider.outer-swiper {
+    .swiper {
+        width: 100%;
+        padding-top: 50px;
+        margin-top: -50px;
+        padding-bottom: 50px;
+        margin-bottom: -50px;
+
+        .swiper-wrapper {
+            .swiper-slide {
+                position: relative;
+                height: inherit;
+                border-radius: 4px;
+                overflow: hidden;
+                box-shadow: rgba(158, 158, 158, 0.35) 0px 5px 15px;
+                width: 16.7%;
+                aspect-ratio: 2/3;
+
+                .image {
+                    width: inherit;
+                    height: 100%;
+
+                    img {
+                        width: inherit;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .content {
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100%;
+                    height: 25%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: baseline;
+
+                    p {
+                        background-color: rgba(0, 0, 0, .5);
+                        box-shadow: rgba(158, 158, 158, 0.35) 0px 5px 15px;
+                        padding: 6px 8px;
+                        color: white;
+                        transition: all 1s linear;
+
+
+                        &:first-child {
+                            text-align: left;
+                            align-self: flex-start;
+                            border-top-right-radius: 4px;
+                            border-bottom-right-radius: 4px;
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+
+                        &:last-child {
+                            text-align: right;
+                            align-self: flex-end;
+                            border-top-left-radius: 4px;
+                            border-bottom-left-radius: 4px;
+                            font-style: italic;
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                &:hover {
+                    .content {
+                        p {
+                            width: 100%;
+                            border-radius: unset;
+                            transition: all 1s linear;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

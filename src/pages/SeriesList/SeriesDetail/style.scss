@@ -1,0 +1,69 @@
+.banner {
+    background: linear-gradient(rgba(0,0,0,.9), rgba(0,0,0,.7)), var(--backgroundImage);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .inner-section {
+        display: flex;
+        gap: 40px;
+        padding: 40px 24px;
+        .image {
+            max-width: 300px;
+            width: 100%;
+            img {
+            max-width: inherit;
+            width: inherit;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+        }
+        .content {
+            &> * {
+                margin-top: 16px;
+            }
+            h2 {
+                .year {
+                font-style: italic;
+                opacity: .8;
+                }
+            }
+            .infos {
+                color: white;
+                &> * {
+                    margin-right: 16px;
+                }
+            }
+            .tagline {
+                font-size: 14px;
+                color: white;
+                opacity: .6;
+                font-style: italic;
+            }
+            .overview {
+                color: white;
+            }
+            .links {
+                display: flex;
+                gap: 8px;
+                a {
+                    color: white;
+                    font-size: 12px;
+                    font-style: italic;
+                    text-decoration: underline;
+                }
+            }
+            .vote-average {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .CircularProgressbar  {
+                    width: 60px;
+                }
+                .vote-count {
+                    font-size: 16px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
