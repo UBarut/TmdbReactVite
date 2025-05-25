@@ -4,10 +4,16 @@ export type BaseSlide = {
   id: number
 }
 //Type Render
+// export type SwiperTypes<T extends BaseSlide> = Partial<SwiperProps> & {
+//   key: string
+//   slides: T[]
+//   classNameSwiperOuterDiv?: string
+//   slideType: string
+// }
 export type SwiperTypes<T extends BaseSlide> = Partial<SwiperProps> & {
-  slides: T[]
-  classNameSwiperOuterDiv?: string
-  slideType: string
+  sectionName: string
+  slides?: T[]
+  config?: Record<string, any>
 }
 
 //Slider Types

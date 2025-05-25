@@ -1,0 +1,31 @@
+.skeleton {
+    border-radius: 4px;
+
+    &.cardSlide01 {
+        aspect-ratio: 2/3;
+        border-radius: 4px;
+        background-color: rgba($color: white, $alpha: .2);
+
+        .image {
+            svg {
+                // width: 50%;
+                height: 30%;
+                color: rgba($color: white, $alpha: .4);
+            }
+        }
+    }
+
+    &.mainSlide {
+        width: 100%;
+        aspect-ratio: 3840/2160;
+        background-color: rgba($color: white, $alpha: .2);
+
+        .image {
+            svg {
+                // width: 50%;
+                height: 20%;
+                color: rgba($color: white, $alpha: .4);
+            }
+        }
+    }
+}

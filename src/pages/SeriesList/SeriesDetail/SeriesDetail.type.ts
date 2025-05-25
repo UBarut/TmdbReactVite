@@ -1,5 +1,5 @@
-import type { baseMovieDetailDataType } from "../../../services/api/TMDBApi.type";
+import type { baseSeriesDetailDataType } from "../../../services/api/TMDBApi.type";
 
 export type SeriesDetailDataType = {
-  getSeriesDetail: baseMovieDetailDataType | null;
+  getSeriesDetail: baseSeriesDetailDataType | null;
 }

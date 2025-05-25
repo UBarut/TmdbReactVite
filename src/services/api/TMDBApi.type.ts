@@ -97,6 +97,23 @@ export type baseMovieDetailDataType = {
   vote_count: string
   credits: any
 }
+export type baseSeriesDetailDataType = {
+  card_image: string
+  bg_image: string
+  title: string
+  original_title: string
+  first_air_year: string
+  first_air_date: string
+  genres: any
+  tagline: string
+  overview: string
+  homepage: string
+  // imdb_id: string
+  vote_average: string
+  vote_count: string
+  number_of_seasons: string
+  credits: any
+}
 
 type MovieCastListType = {
   id: number

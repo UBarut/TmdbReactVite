@@ -17,20 +17,25 @@ export function MovieDetail() {
   const [movieDetailData, setMovieDetailData] = useState<MovieDetailDataType>({
     getMovieDetail: null,
   });
+  const [loading, setLoading] = useState<boolean>(false);
+  
   useEffect(() => {
     const fetchMovies = async () => {
       const getMovieDetail = await getMovieDetailAsync({ movieId: pageId });
       setMovieDetailData({ ...movieDetailData, getMovieDetail });
+      setTimeout(() => {        
+        setLoading(true);
+      }, 5000);
     };
     fetchMovies();
   }, [])
   const movie = movieDetailData.getMovieDetail;
-  if (movie) {
+  // if (movie) {
     const castList = movieDetailData?.getMovieDetail?.credits;
     return (
       <>
-        <MovieTvBannerContainer id="banner" className="banner" data={movieDetailData.getMovieDetail} />
-        <SliderContainer id="Cast" className="card-slider-container-01">
+        <MovieTvBannerContainer loading={loading} id="banner" className="banner" type="movie" data={movieDetailData.getMovieDetail} />
+        {/* <SliderContainer id="Cast" className="card-slider-container-01">
           <Title title={"h2"}>
             <span>Cast</span>
           </Title>
@@ -46,12 +51,12 @@ export function MovieDetail() {
             slideType="CastSlideCard"
             classNameSwiperOuterDiv="cast-slider"
           />
-        </SliderContainer>
+        </SliderContainer> */}
       </>
     )
-  } else {
-    return (
-      <p>Hataa</p>
-    )
-  }
+  // } else {
+  //   return (
+  //     <p>Hataa</p>
+  //   )
+  // }
 }

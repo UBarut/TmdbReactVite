@@ -13,23 +13,25 @@ import MovieTvBannerContainer from "../../../components/sections/Container/Movie
 export function SeriesDetail() {
   const params = useParams();
   const pageId = params.id;
-  console.log(pageId);
   const [seriesDetailData, setSeriesDetailData] = useState<SeriesDetailDataType>({
     getSeriesDetail: null,
   });
+
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchSeries = async () => {
       const getSeriesDetail = await getSeriesDetailAsync({ seriesId: pageId });
       setSeriesDetailData({ ...seriesDetailData, getSeriesDetail });
     };
-    fetchMovies();
-  }, [])
-  const movie = seriesDetailData.getSeriesDetail;
-  if (movie) {
+    fetchSeries();
+  }, []);
+
+  const series = seriesDetailData.getSeriesDetail;
+
+  if (series) {
     const castList = seriesDetailData?.getSeriesDetail?.credits;
     return (
       <>
-        <MovieTvBannerContainer id="banner" className="banner" data={seriesDetailData.getSeriesDetail} />
+        <MovieTvBannerContainer id="banner" className="banner" type={"series"} data={seriesDetailData.getSeriesDetail} />
         <SliderContainer id="Cast" className="card-slider-container-01">
           <Title title={"h2"}>
             <span>Cast</span>

@@ -1,5 +1,6 @@
 import type React from "react";
 import type { MainSlide, CardSlide_01, CardSlide_02, CastSlideCard_01 } from "./Slider.types";
+import { Link } from "react-router-dom";
 
 function MainSlide(slide: MainSlide) {
     return (
@@ -15,25 +16,25 @@ function MainSlide(slide: MainSlide) {
 }
 function CardSlide_01(slide: CardSlide_01) {
     return (
-        <a href={slide.url} target={slide.target ? "_blank": ""}>
-            <div className="image">
-                <img src={slide.card_image} alt={slide.title} />
+        <Link to={slide.url} target={slide.target ? "_blank" : ""}>
+            <div className="image h-full">
+                <img src={slide.card_image} alt={slide.title} className="h-full object-cover" />
             </div>
-        </a>
+        </Link>
     )
 }
 function CardSlide_02(slide: CardSlide_02) {
     return (
-        <a href={slide.url} target={slide.target ? "_blank": ""}>
+        <Link to={slide.url} target={slide.target ? "_blank" : ""}>
             <div className="image">
                 <img src={slide.card_image} alt={slide.title} />
             </div>
-        </a>
+        </Link >
     )
 }
 function CastSlideCard(slide: CastSlideCard_01) {
     return (
-        <a href={`/cast-list/${slide.id}`}>
+        <Link to={`/cast-list/${slide.id}`}>
             <div className="card_image">
                 <img src={slide.card_image} alt={slide.name} />
             </div>
@@ -41,11 +42,12 @@ function CastSlideCard(slide: CastSlideCard_01) {
                 <p className="name">{slide.name}</p>
                 <p className="character-name">{slide.characterName}</p>
             </div>
-        </a>
+        </Link >
     )
 }
 // Daha dinamik yapılması için incelenecek.
 export default function SelectedSlideType(slideName: string, slide: any) {
+        console.log(slideName)
     const slides: Record<string, React.FC<any>> = {
         MainSlide,
         CardSlide_01,
@@ -54,5 +56,6 @@ export default function SelectedSlideType(slideName: string, slide: any) {
     };
 
     const SlideComponent = slides[slideName];
+
     return SlideComponent ? <SlideComponent {...slide} /> : null;
 }

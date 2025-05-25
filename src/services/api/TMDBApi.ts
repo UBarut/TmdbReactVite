@@ -94,26 +94,29 @@ export const getSeriesDetailAsync = ({
     axiosInstance.get(`/tv/${seriesId}/credits?language=en-US`)
   ])
     .then(([detailRes, creditsRes]) => {
-      const movie = detailRes.data;
+      const series = detailRes.data;
       const casts = creditsRes.data.cast;
       const crews = creditsRes.data.crew;
+
+      //Values
+      console.log(detailRes);
+      
       const detailData = {
         // ...detailRes.data,
-        card_image: `${TMDB_IMAGE_PATH}${movie.poster_path}`,
-        bg_image: `${TMDB_IMAGE_PATH}${movie.backdrop_path}`,
-        title: movie.name,
-        original_title: movie.original_title,
-        release_year: new Date(movie.release_date).getFullYear().toString(),
-        release_date: movie.release_date,
-        genres: movie.genres.map((genre: object[] | any) => genre.name).join(', '),
-        movie_time: `${Math.round(movie.runtime / 60)}h ${movie.runtime % 60}m`,
-        tagline: movie.tagline,
-        overview: movie.overview,
-        homepage: movie.homepage,
-        imdb_id: movie.imdb_id,
-        vote_average: movie.vote_average,
-        vote_count: movie.vote_count,
-        number_of_seasons: movie.number_of_seasons
+        card_image: `${TMDB_IMAGE_PATH}${series.poster_path}`,
+        bg_image: `${TMDB_IMAGE_PATH}${series.backdrop_path}`,
+        title: series.name,
+        original_title: series.original_name,
+        first_air_year: new Date(series.first_air_date).getFullYear().toString(),
+        first_air_date: series.first_air_date,
+        genres: series.genres.map((genre: object[] | any) => genre.name).join(', '),
+        tagline: series.tagline,
+        overview: series.overview,
+        homepage: series.homepage,
+        // imdb_id: series.imdb_id,
+        vote_average: series.vote_average,
+        vote_count: series.vote_count,
+        number_of_seasons: series.number_of_seasons
       };
       const combinedData = {
         ...detailData,

@@ -47,7 +47,7 @@
 
 .cardSlider-01.outer-swiper {
     .swiper {
-        width: 100%;
+        // width: 100%;
         padding-top: 50px;
         margin-top: -50px;
         padding-bottom: 50px;
@@ -55,22 +55,27 @@
 
         .swiper-wrapper {
             .swiper-slide {
-                position: relative;
-                height: inherit;
-                border-radius: 4px;
-                overflow: hidden;
-                box-shadow: rgba(158, 158, 158, 0.35) 0px 5px 15px;
-                width: 16.7%;
-                aspect-ratio: 2/3;
+                a {
+                    // position: relative;
+                    // height: inherit;
+                    display: block;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    box-shadow: rgba(158, 158, 158, 0.35) 0px 5px 15px;
+                    //Kart animasyonu için bu shadowu kullan
+                    // box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+                    // width: 16.7%;
+                    aspect-ratio: 2/3;
 
-                .image {
-                    width: inherit;
-                    height: 100%;
+                    .image {
+                        // width: inherit;
+                        // height: 100%;
 
-                    img {
-                        width: inherit;
-                        height: 100%;
-                        object-fit: cover;
+                        img {
+                            // width: inherit;
+                            // height: 100%;
+                            // object-fit: cover;
+                        }
                     }
                 }
             }
