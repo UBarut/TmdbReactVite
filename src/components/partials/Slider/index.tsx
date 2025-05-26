@@ -1,33 +1,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import 'swiper/css/navigation';
 import "./style.scss"
 
-import type { SwiperTypes, SwiperTypes2 } from "./Slider.types";
+import type { SwiperTypes } from "./Slider.types";
 import SelectedSlideType from "./Slides";
 import { useLoading } from "../../../context/LoadingContext";
 import SelectedSkeletonType from "../Skeleton";
 
-// export function Slider<T extends { id: number }>(
-//     {
-//         key,
-//         slides,
-//         classNameSwiperOuterDiv = "",
-//         slideType,
-//         ...swiperProps
-//     }: SwiperTypes<T>
-// ) {
-//     return (
-//         <div className={classNameSwiperOuterDiv + " outer-swiper"}>
-//             <Swiper {...swiperProps}>
-//                 {slides.map((slide) => (
-//                     <SwiperSlide key={slide.id}>
-//                         {/* {SelectedSlideType(key, slideType, slide)} */}
-//                     </SwiperSlide>
-//                 ))}
-//             </Swiper>
-//         </div>
-//     )
-// }
 export function Slider<T extends { id: number }>(
     {
         sectionName,
@@ -35,12 +15,10 @@ export function Slider<T extends { id: number }>(
         config
     }: SwiperTypes<T>
 ) {
-
-    const { loadingMap, setLoading } = useLoading();
+    const { loadingMap } = useLoading();
     const isLoading = loadingMap[sectionName];
-    // console.log(isLoading);
+    
     if (isLoading) {
-        // console.log(config?.swiperOuterClassName)
         return (
             <div className={config?.swiperOuterClassName + " outer-swiper"}>
                 <Swiper {...config?.sliderFeatures}>

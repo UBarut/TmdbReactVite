@@ -2,9 +2,13 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import type { MovieTvBannerContainerType } from "./MovieTvBannerContainer.type";
 import "./style.scss"
 import Title from "../../../partials/Title";
+import { useLoading } from "@context/LoadingContext";
+import { SkeletonMoviTvBannerContainer } from "@components/partials/Skeleton";
 
-export default function MovieTvBannerContainer({ id, loading, className = "banner", type = "movie", data }: MovieTvBannerContainerType) {
-    if (loading) {
+export default function MovieTvBannerContainer({ id, className = "banner", type = "movie", data }: MovieTvBannerContainerType) {
+    const { loadingMap } = useLoading();
+    const isLoading = loadingMap["movieDetailBanner"];
+    if (isLoading) {
         if (type === "movie") {
             return (
                 <section id={id} className={className} style={{ ['--backgroundImage']: `url(${data.bg_image})` } as React.CSSProperties}>
@@ -76,13 +80,7 @@ export default function MovieTvBannerContainer({ id, loading, className = "banne
     else {
         //Skeleton
         return (
-            <>
-                <h2>Yükleniyor...</h2>
-                {/* <Skeleton> // Genel konteyner
-                    <SkeletonCircle size="50px" /> // Avatar için
-                    <SkeletonText mt="4" noOfLines={2} spacing="4" skeletonHeight="2" /> // İsim ve açıklama için
-                </Skeleton> */}
-            </>
+            <SkeletonMoviTvBannerContainer />
         )
     }
 }

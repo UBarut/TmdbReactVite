@@ -28,4 +28,131 @@
             }
         }
     }
+
+    &.movieTvDetailBanner {
+        background-color: rgba($color: white, $alpha: .2);
+
+        .inner-section {
+            display: flex;
+            gap: 40px;
+            padding: 40px 24px;
+
+            .image {
+                max-width: 300px;
+                aspect-ratio: 2/3;
+                border-radius: 4px;
+                width: 100%;
+                background-color: rgba($color: white, $alpha: .4);
+            }
+
+            .content {
+                width: 100%;
+
+                &>* {
+                    margin-top: 16px;
+                }
+
+                .title {
+                    display: flex;
+                    gap: 8px;
+                    align-items: baseline;
+
+                    span {
+                        border-radius: 4px;
+                        background-color: rgba($color: white, $alpha: .4);
+                        height: 54px;
+
+                        &:nth-child(1) {
+                            width: 40%;
+                        }
+
+                        &:nth-child(2) {
+                            width: 25%;
+                        }
+
+                        &:nth-child(3) {
+                            width: 10%;
+                        }
+                    }
+                }
+
+                .infos {
+                    display: flex;
+                    gap: 12px;
+                    align-items: baseline;
+
+                    span {
+                        border-radius: 4px;
+                        background-color: rgba($color: white, $alpha: .4);
+                        height: 22px;
+
+                        &:nth-child(1) {
+                            width: 10%;
+                        }
+
+                        &:nth-child(2) {
+                            width: 20%;
+                        }
+
+                        &:nth-child(3) {
+                            width: 6%;
+                        }
+                    }
+                }
+
+                .tagline {
+                    border-radius: 4px;
+                    background-color: rgba($color: white, $alpha: .4);
+                    height: 21px;
+                    width: 60%;
+                }
+
+                .movieSummary {
+                    border-radius: 4px;
+                    background-color: rgba($color: white, $alpha: .4);
+                    height: 32px;
+                    width: 20%;
+                }
+
+                .overview {
+                    border-radius: 4px;
+                    background-color: rgba($color: white, $alpha: .4);
+                    height: 64px;
+                    width: 80%;
+                }
+
+                .links {
+                    display: flex;
+                    gap: 8px;
+
+                    span {
+                        border-radius: 4px;
+                        background-color: rgba($color: white, $alpha: .4);
+                        height: 16px;
+                        width: 8%;
+                    }
+                }
+
+                .vote-average {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+
+                    .circle {
+                        border-radius: 50%;
+                        background-color: rgba($color: white, $alpha: .4);
+                        height: 80px;
+                        width: 80px;
+                    }
+
+                    .vote-count {
+                        border-radius: 4px;
+                        background-color: rgba($color: white, $alpha: .4);
+                        height: 24px;
+                        width: 14%;
+                    }
+                }
+            }
+        }
+    }
 }

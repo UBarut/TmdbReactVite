@@ -1,8 +1,8 @@
-import { Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 //Sliderlarda Kulanılan Değerler
 
-export const movieTvApiSections = {
+export const movieTvApiSections: Record<string, any[]> = {
     popularMovieSeries: [
         {
             apiType: "movie",
@@ -17,6 +17,9 @@ export const movieTvApiSections = {
             swiperOuterClassName: "mainSlider",
             sliderFeatures: {
                 slidesPerView: 1,
+                navigation: true,
+                modules: [Navigation],
+                loop: true,
             },
             slidesMaxCount: 10,
         },
@@ -33,6 +36,7 @@ export const movieTvApiSections = {
             swiperOuterClassName: "mainSlider",
             sliderFeatures: {
                 slidesPerView: 1,
+                navigation: true
             },
             slidesMaxCount: 5,
         }

@@ -24,7 +24,10 @@ export const getMoviesTvAsync = ({ type, category, page, urlPrefix, successMetho
         url: `${urlPrefix}/${item.id}/${slugify(item.title || item.name)}`,
         card_image: item.poster_path ? `${TMDB_IMAGE_PATH}${item.poster_path}` : null,
         bg_image: item.backdrop_path ? `${TMDB_IMAGE_PATH}${item.backdrop_path}` : null,
-        release_date: item.release_date
+        release_date: item.release_date,
+        desc: item.overview,
+        vote_average: item.vote_average,
+        
       }));
       if (successMethod) successMethod();
       return results;

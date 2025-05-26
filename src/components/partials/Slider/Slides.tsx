@@ -1,8 +1,17 @@
 import type React from "react";
-import type { MainSlide, CardSlide_01, CardSlide_02, CastSlideCard_01 } from "./Slider.types";
+import type { MainSlide, CardSlide_01, CastSlideCard_01 } from "./Slider.types";
 import { Link } from "react-router-dom";
+import { CircularProgressbar } from "react-circular-progressbar";
 
 function MainSlide(slide: MainSlide) {
+    const date = new Date(slide.release_date);
+    //Dil seçeneği ekleneceği zaman bu kısım etkilenecek
+    const formattedDate = date.toLocaleDateString("en", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
+
     return (
         <>
             <div className="image">
@@ -10,6 +19,12 @@ function MainSlide(slide: MainSlide) {
             </div>
             <div className="content">
                 {slide.title && <h3>{slide.title}</h3>}
+                {slide.desc && <p className="desc">{slide.desc}</p>}
+                {slide.release_date && <p className="date">{formattedDate}</p>}
+                <div className="vote-average">
+                    <CircularProgressbar value={slide.vote_average * 10} text={slide.vote_average.toFixed(1)} />
+                </div>
+                <Link to={slide.url} className="detail-btn"><span>Detail</span></Link>
             </div>
         </>
     )
@@ -20,16 +35,11 @@ function CardSlide_01(slide: CardSlide_01) {
             <div className="image h-full">
                 <img src={slide.card_image} alt={slide.title} className="h-full object-cover" />
             </div>
-        </Link>
-    )
-}
-function CardSlide_02(slide: CardSlide_02) {
-    return (
-        <Link to={slide.url} target={slide.target ? "_blank" : ""}>
-            <div className="image">
-                <img src={slide.card_image} alt={slide.title} />
+            <div className="content">
+                {slide.title && <h3>{slide.title}</h3>}
+                {slide.desc && <p className="desc">{slide.desc}</p>}
             </div>
-        </Link >
+        </Link>
     )
 }
 function CastSlideCard(slide: CastSlideCard_01) {
@@ -47,11 +57,10 @@ function CastSlideCard(slide: CastSlideCard_01) {
 }
 // Daha dinamik yapılması için incelenecek.
 export default function SelectedSlideType(slideName: string, slide: any) {
-        console.log(slideName)
+    console.log(slideName)
     const slides: Record<string, React.FC<any>> = {
         MainSlide,
         CardSlide_01,
-        CardSlide_02,
         CastSlideCard,
     };
 

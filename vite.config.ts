@@ -11,9 +11,13 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@api': path.resolve(__dirname, 'src/services/api'),
       '@components': path.resolve(__dirname, 'src/components'),
+      '@partials': path.resolve(__dirname, 'src/components/partials'),
       '@pages': path.resolve(__dirname, 'src/pages'),
+      '@context': path.resolve(__dirname, 'src/context'),
+      '@api': path.resolve(__dirname, 'src/services/api'),
+      '@constants': path.resolve(__dirname, 'src/utils/constants'),
+      '@HelmetComp': path.resolve(__dirname, 'src/components/sections/Head/HelmetComp'),
     }
   }
 })

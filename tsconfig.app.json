@@ -21,7 +21,19 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Path Handler */
+    "baseUrl": "src",
+    "paths": {
+      "@api/*": ["services/api/*"],
+      "@components/*": ["components/*"],
+      "@partials/*": ["components/partials/*"],
+      "@pages/*": ["pages/*"],
+      "@context/*": ["context/*"],
+      "@constants/*": ["utils/constants/*"],
+      "@HelmetComp": ["components/sections/Head/HelmetComp"],
+    },
   },
   "include": ["src"]
 }

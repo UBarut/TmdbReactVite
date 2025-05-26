@@ -9,7 +9,11 @@
     "paths": {
       "@api/*": ["services/api/*"],
       "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"]
+      "@partials/*": ["components/partials/*"],
+      "@pages/*": ["pages/*"],
+      "@context/*": ["context/*"],
+      "@constants/*": ["utils/constants/*"],
+      "@HelmetComp": ["components/sections/Head/HelmetComp"],
     }
   }
 }

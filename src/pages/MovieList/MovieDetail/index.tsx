@@ -9,54 +9,67 @@ import SliderContainer from "../../../components/sections/Container/SliderContai
 import { Pagination } from "swiper/modules";
 import { Slider } from "../../../components/partials/Slider";
 import MovieTvBannerContainer from "../../../components/sections/Container/MovieTvBannerContainer";
+import HelmetComp from "@HelmetComp";
+import { useLoading } from "@context/LoadingContext";
 
 export function MovieDetail() {
   const params = useParams();
   const pageId = params.id;
-  console.log(pageId);
+
   const [movieDetailData, setMovieDetailData] = useState<MovieDetailDataType>({
     getMovieDetail: null,
   });
-  const [loading, setLoading] = useState<boolean>(false);
-  
+  const { setLoading } = useLoading();
+
   useEffect(() => {
+    //sekronizasyon problemi var!!!
+    setLoading("movieDetailBanner", false);
+    setLoading("castSlider", true);
     const fetchMovies = async () => {
       const getMovieDetail = await getMovieDetailAsync({ movieId: pageId });
       setMovieDetailData({ ...movieDetailData, getMovieDetail });
-      setTimeout(() => {        
-        setLoading(true);
-      }, 5000);
+      // setTimeout(() => {
+        setLoading("movieDetailBanner", true);
+        setLoading("castSlider", false);
+      // }, 1000);
     };
     fetchMovies();
   }, [])
-  const movie = movieDetailData.getMovieDetail;
-  // if (movie) {
-    const castList = movieDetailData?.getMovieDetail?.credits;
-    return (
-      <>
-        <MovieTvBannerContainer loading={loading} id="banner" className="banner" type="movie" data={movieDetailData.getMovieDetail} />
-        {/* <SliderContainer id="Cast" className="card-slider-container-01">
-          <Title title={"h2"}>
-            <span>Cast</span>
-          </Title>
-          <Slider
-            slides={castList}
-            slidesPerView={5}
-            spaceBetween={20}
-            pagination={{
-              clickable: true,
-            }}
-            // loop={true}
-            modules={[Pagination]}
-            slideType="CastSlideCard"
-            classNameSwiperOuterDiv="cast-slider"
-          />
-        </SliderContainer> */}
-      </>
-    )
-  // } else {
-  //   return (
-  //     <p>Hataa</p>
-  //   )
-  // }
+  const castList = movieDetailData?.getMovieDetail?.credits;
+  
+  const headData = {
+    title: movieDetailData.getMovieDetail?.title.toString() || "",
+    desc: movieDetailData.getMovieDetail?.tagline
+  }
+  const sliderConfig = {
+    elementClassName: "cast-card-slider-container-01",
+    slideType: "CastSlideCard",
+    swiperOuterClassName: "cast-slider",
+    sliderFeatures: {
+      slidesPerView: 5,
+      spaceBetween: 20,
+      pagination: {
+        clickable: true,
+      },
+      loop: true,
+      modules: [Pagination],
+    },
+    slidesMaxCount: null
+  }
+  return (
+    <>
+      <HelmetComp headData={headData} />
+      <MovieTvBannerContainer id="banner" className="banner" type="movie" data={movieDetailData.getMovieDetail} />
+      <SliderContainer id="Cast" className="card-slider-container-01">
+        <Title title={"h2"}>
+          <span>Cast</span>
+        </Title>
+        <Slider
+          sectionName={"castSlider"}
+          slides={castList}
+          config={sliderConfig}
+        />
+      </SliderContainer>
+    </>
+  )
 }

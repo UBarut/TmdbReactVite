@@ -32,7 +32,7 @@ export function SeriesDetail() {
     return (
       <>
         <MovieTvBannerContainer id="banner" className="banner" type={"series"} data={seriesDetailData.getSeriesDetail} />
-        <SliderContainer id="Cast" className="card-slider-container-01">
+        {/* <SliderContainer id="Cast" className="card-slider-container-01">
           <Title title={"h2"}>
             <span>Cast</span>
           </Title>
@@ -48,7 +48,7 @@ export function SeriesDetail() {
             slideType="CastSlideCard"
             classNameSwiperOuterDiv="cast-slider"
           />
-        </SliderContainer>
+        </SliderContainer> */}
       </>
     )
   } else {

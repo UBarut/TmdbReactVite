@@ -1,11 +1,13 @@
 
 import { useEffect, useState } from "react"
-import { getMoviesTvAsync } from "../../services/api/TMDBApi";
-import { Slider } from "../../components/partials/Slider";
-import Title from "../../components/partials/Title";
-import SliderContainer from "../../components/sections/Container/SliderContainer";
-import { movieTvApiSections } from "../../utils/constants/movieTvApiSections";
-import { useLoading } from "../../context/LoadingContext";
+import { getMoviesTvAsync } from "@api/TMDBApi";
+import { Slider } from "@partials/Slider";
+import Title from "@partials/Title";
+import SliderContainer from "@components/sections/Container/SliderContainer";
+import { movieTvApiSections } from "@constants/movieTvApiSections";
+import { useLoading } from "@context/LoadingContext";
+import HelmetComp from "@HelmetComp";
+import model from "./model";
 
 export function Home() {
   const [movieData, setMovieData] = useState<Record<string, any[]>>({});
@@ -35,8 +37,8 @@ export function Home() {
             // result[key] = dataArray.flat();
             result[key] = dataArray.flat().sort((a, b) => {
               return new Date(b.release_date).getTime() - new Date(a.release_date).getTime();
-            });            
-              setLoading(key, false);
+            });
+            setLoading(key, false);
           } catch (err) {
             console.error(`Error fetching data for key: ${key}`, err);
             result[key] = [];
@@ -50,6 +52,7 @@ export function Home() {
 
   return (
     <>
+      <HelmetComp headData={model.languages["en"].seo} />
       {
         Object.entries(movieTvApiSections).map(
           ([key, configArray]) => {

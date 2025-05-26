@@ -3,13 +3,7 @@ import type { SwiperProps } from "swiper/react"
 export type BaseSlide = {
   id: number
 }
-//Type Render
-// export type SwiperTypes<T extends BaseSlide> = Partial<SwiperProps> & {
-//   key: string
-//   slides: T[]
-//   classNameSwiperOuterDiv?: string
-//   slideType: string
-// }
+
 export type SwiperTypes<T extends BaseSlide> = Partial<SwiperProps> & {
   sectionName: string
   slides?: T[]
@@ -22,10 +16,9 @@ export type MainSlide = BaseSlide & {
   bg_image: string
   target: boolean
   title?: string
-}
-export type MainSlideOld = BaseSlide & {
-  backdrop_path: string
-  original_title?: string
+  desc?: string
+  release_date: string
+  vote_average: number
 }
 
 export type CardSlide_01 = BaseSlide & {
@@ -33,12 +26,7 @@ export type CardSlide_01 = BaseSlide & {
   card_image: string
   target: boolean
   title?: string
-}
-export type CardSlide_02 = BaseSlide & {
-  url: string
-  card_image: string
-  target: boolean
-  title?: string
+  desc?: string
 }
 
 export type CastSlideCard_01 = BaseSlide & {
