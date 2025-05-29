@@ -25,18 +25,28 @@ export function MovieDetail() {
     //sekronizasyon problemi var!!!
     setLoading("movieDetailBanner", false);
     setLoading("castSlider", true);
+    // debugger;
     const fetchMovies = async () => {
       const getMovieDetail = await getMovieDetailAsync({ movieId: pageId });
       setMovieDetailData({ ...movieDetailData, getMovieDetail });
-      // setTimeout(() => {
-        setLoading("movieDetailBanner", true);
-        setLoading("castSlider", false);
-      // }, 1000);
+      // debugger;
     };
     fetchMovies();
-  }, [])
+  }, [pageId]);
+
+  useEffect(() => {
+    if (movieDetailData.getMovieDetail != null) {
+      // setTimeout(() => {
+      setLoading("movieDetailBanner", true);
+      setLoading("castSlider", false);
+      // debugger;
+      // }, 1000);
+    }
+  }, [movieDetailData.getMovieDetail]);
+
+
   const castList = movieDetailData?.getMovieDetail?.credits;
-  
+
   const headData = {
     title: movieDetailData.getMovieDetail?.title.toString() || "",
     desc: movieDetailData.getMovieDetail?.tagline
@@ -59,7 +69,7 @@ export function MovieDetail() {
   return (
     <>
       <HelmetComp headData={headData} />
-      <MovieTvBannerContainer id="banner" className="banner" type="movie" data={movieDetailData.getMovieDetail} />
+        <MovieTvBannerContainer id="banner" className="banner" type="movie" data={movieDetailData.getMovieDetail} />
       <SliderContainer id="Cast" className="card-slider-container-01">
         <Title title={"h2"}>
           <span>Cast</span>

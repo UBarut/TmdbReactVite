@@ -7,6 +7,7 @@ import type { SwiperTypes } from "./Slider.types";
 import SelectedSlideType from "./Slides";
 import { useLoading } from "../../../context/LoadingContext";
 import SelectedSkeletonType from "../Skeleton";
+import { isNull } from "lodash";
 
 export function Slider<T extends { id: number }>(
     {
@@ -18,7 +19,7 @@ export function Slider<T extends { id: number }>(
     const { loadingMap } = useLoading();
     const isLoading = loadingMap[sectionName];
     
-    if (isLoading) {
+    if (isLoading && !isNull(config)) {
         return (
             <div className={config?.swiperOuterClassName + " outer-swiper"}>
                 <Swiper {...config?.sliderFeatures}>

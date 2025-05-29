@@ -4,11 +4,12 @@ import "./style.scss"
 import Title from "../../../partials/Title";
 import { useLoading } from "@context/LoadingContext";
 import { SkeletonMoviTvBannerContainer } from "@components/partials/Skeleton";
+import { isNull } from 'lodash';
 
 export default function MovieTvBannerContainer({ id, className = "banner", type = "movie", data }: MovieTvBannerContainerType) {
     const { loadingMap } = useLoading();
     const isLoading = loadingMap["movieDetailBanner"];
-    if (isLoading) {
+    if (isLoading && !isNull(data)) {
         if (type === "movie") {
             return (
                 <section id={id} className={className} style={{ ['--backgroundImage']: `url(${data.bg_image})` } as React.CSSProperties}>

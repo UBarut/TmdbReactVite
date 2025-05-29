@@ -57,7 +57,6 @@ function CastSlideCard(slide: CastSlideCard_01) {
 }
 // Daha dinamik yapılması için incelenecek.
 export default function SelectedSlideType(slideName: string, slide: any) {
-    console.log(slideName)
     const slides: Record<string, React.FC<any>> = {
         MainSlide,
         CardSlide_01,

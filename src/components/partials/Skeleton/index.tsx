@@ -22,7 +22,6 @@ const SkeletonCardSlide_01 = () => {
     )
 }
 const SkeletonCastSlideCard = () => {
-    console.log("skleton")
     return (
         <div className="skeleton cardSlide01 w-full h-full animate-pulse">
             <div className="image w-full h-full flex justify-center items-center">
