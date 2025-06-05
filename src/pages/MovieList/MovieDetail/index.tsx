@@ -22,28 +22,16 @@ export function MovieDetail() {
   const { setLoading } = useLoading();
 
   useEffect(() => {
-    //sekronizasyon problemi var!!!
     setLoading("movieDetailBanner", false);
     setLoading("castSlider", true);
-    // debugger;
     const fetchMovies = async () => {
       const getMovieDetail = await getMovieDetailAsync({ movieId: pageId });
       setMovieDetailData({ ...movieDetailData, getMovieDetail });
-      // debugger;
+      setLoading("movieDetailBanner", true);
+      setLoading("castSlider", false);
     };
     fetchMovies();
   }, [pageId]);
-
-  useEffect(() => {
-    if (movieDetailData.getMovieDetail != null) {
-      // setTimeout(() => {
-      setLoading("movieDetailBanner", true);
-      setLoading("castSlider", false);
-      // debugger;
-      // }, 1000);
-    }
-  }, [movieDetailData.getMovieDetail]);
-
 
   const castList = movieDetailData?.getMovieDetail?.credits;
 
